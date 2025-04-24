@@ -1,0 +1,77 @@
+runtime: nodejs20
+
+instance_class: F1
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+  target_cpu_utilization: 0.65
+
+env_variables:
+  NEXT_PUBLIC_SUPABASE_URL: "https://qjqgqjqgqjqgqjqgqjqg.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqcWdxanFncWpxZ3FqcWdxanFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk2Njg0MDAsImV4cCI6MjAyNTI0NDQwMH0.YOUR_ANON_KEY"
+
+# Crie uma implantação mais estática
+handlers:
+  # Servir arquivos CSS
+  - url: /_next/static/css/(.*)
+    static_files: .next/static/css/\1
+    upload: .next/static/css/.*
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+      Content-Type: "text/css"
+
+  # Servir arquivos JS
+  - url: /_next/static/chunks/(.*)
+    static_files: .next/static/chunks/\1
+    upload: .next/static/chunks/.*
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+      Content-Type: "application/javascript"
+
+  # Servir arquivos de páginas
+  - url: /_next/static/chunks/app/(.*)
+    static_files: .next/static/chunks/app/\1
+    upload: .next/static/chunks/app/.*
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+      Content-Type: "application/javascript"
+
+  # Servir arquivos de fontes
+  - url: /_next/static/media/(.*)
+    static_files: .next/static/media/\1
+    upload: .next/static/media/.*
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+      Content-Type: "font/woff2"
+
+  # Servir outros arquivos estáticos
+  - url: /_next/static/(.*)
+    static_files: .next/static/\1
+    upload: .next/static/.*
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+
+  # Servir arquivos do diretório public
+  - url: /(.*\.(ico|jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot|css|js|json|html|txt|xml))$
+    static_files: public/\1
+    upload: public/.*\.(ico|jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot|css|js|json|html|txt|xml)$
+    secure: always
+    http_headers:
+      Cache-Control: "public, max-age=31536000, immutable"
+      Access-Control-Allow-Origin: "*"
+
+  # Handler principal para o app Next.js
+  - url: /.*
+    script: auto
+    secure: always 

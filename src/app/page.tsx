@@ -1,103 +1,282 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { Filme, Serie } from '../data/mockData';
+import { getFilmes, getSeries } from '../services/filmes';
+import Loading from '../components/Loading';
+import Header from '../components/Header';
+import Image from 'next/image';
+import Link from 'next/link';
+
+type Conteudo = (Filme & { tipo: 'filme' }) | (Serie & { tipo: 'serie' });
+
+const ITENS_POR_PAGINA = 40;
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [conteudos, setConteudos] = useState<Conteudo[]>([]);
+  const [paginaAtual, setPaginaAtual] = useState(1);
+  const [totalPaginas, setTotalPaginas] = useState(1);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+  const [busca, setBusca] = useState('');
+  const [filtroTipo, setFiltroTipo] = useState<'todos' | 'filmes' | 'series'>('todos');
+  const [animateIn, setAnimateIn] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Efeito para animar os elementos ao carregar a página
+  useEffect(() => {
+    setAnimateIn(true);
+  }, []);
+
+  // Buscar dados quando a busca, página ou filtro mudar
+  const carregarConteudo = useCallback(async (
+    pagina: number, 
+    tipo: 'todos' | 'filmes' | 'series',
+    termoBusca: string
+  ) => {
+    setCarregando(true);
+    setErro(null);
+    try {
+      let filmesData: Filme[] = [];
+      let seriesData: Serie[] = [];
+      let totalFilmes = 0;
+      let totalSeries = 0;
+      let paginasFilmes = 0;
+      let paginasSeries = 0;
+
+      // Buscar filmes se estiver na aba 'todos' ou 'filmes'
+      if (tipo === 'todos' || tipo === 'filmes') {
+        const resFilmes = await getFilmes(pagina, ITENS_POR_PAGINA, termoBusca);
+        filmesData = resFilmes.data;
+        totalFilmes = resFilmes.totalItens;
+        paginasFilmes = resFilmes.totalPaginas;
+      }
+      
+      // Buscar séries se estiver na aba 'todos' ou 'series'
+      if (tipo === 'todos' || tipo === 'series') {
+        const resSeries = await getSeries(pagina, ITENS_POR_PAGINA, termoBusca);
+        seriesData = resSeries.data;
+        totalSeries = resSeries.totalItens;
+        paginasSeries = resSeries.totalPaginas;
+      }
+
+      // Combinar os resultados
+      const novosConteudos: Conteudo[] = [
+        ...filmesData.map(f => ({ ...f, tipo: 'filme' as const })),
+        ...seriesData.map(s => ({ ...s, tipo: 'serie' as const }))
+      ];
+      
+      setConteudos(novosConteudos);
+      
+      // Definir total de páginas baseado no filtro atual
+      if (tipo === 'filmes') {
+        setTotalPaginas(paginasFilmes);
+      } else if (tipo === 'series') {
+        setTotalPaginas(paginasSeries);
+      } else { // 'todos'
+        setTotalPaginas(Math.max(paginasFilmes, paginasSeries));
+      }
+      
+    } catch (err) {
+      console.error('Erro ao carregar conteúdo:', err);
+      setErro('Não foi possível carregar o conteúdo.');
+      setConteudos([]); // Limpa em caso de erro
+      setTotalPaginas(1);
+    } finally {
+      setCarregando(false);
+      window.scrollTo(0, 0); // Rola para o topo ao mudar de página
+    }
+  }, []);
+
+  // Efeito para carregar conteúdo quando a página, filtro ou busca mudar
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      carregarConteudo(paginaAtual, filtroTipo, busca);
+    }, 500); // Adiciona um delay para evitar muitas requisições durante a digitação
+    
+    return () => clearTimeout(timeoutId);
+  }, [paginaAtual, filtroTipo, busca, carregarConteudo]);
+
+  // Resetar para página 1 quando o filtro ou busca mudar
+  useEffect(() => {
+    setPaginaAtual(1);
+  }, [filtroTipo, busca]);
+
+  // Função para mudar a página
+  const mudarPagina = (novaPagina: number) => {
+    if (novaPagina >= 1 && novaPagina <= totalPaginas) {
+      setPaginaAtual(novaPagina);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900 text-gray-100">
+      {/* Formas decorativas com animação */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-20%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
+        <div className="absolute top-[30%] right-[-20%] w-[400px] h-[400px] rounded-full bg-pink-600/10 blur-3xl animate-pulse-slow animation-delay-1000"></div>
+      </div>
+      
+      <Header showBackButton={false} />
+      
+      {/* Conteúdo principal */}
+      <div className="pt-16 relative z-10">
+        {/* Cabeçalho com busca e filtro */}
+        <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} mx-4 mt-4 mb-6 sticky top-20 z-10`}>
+          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl overflow-hidden shadow-xl mb-4">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Buscar por título..."
+                value={busca}
+                onChange={(e) => setBusca(e.target.value)}
+                className="w-full py-4 pl-12 pr-4 bg-transparent border-none focus:outline-none focus:ring-0 text-white placeholder-purple-300/70"
+              />
+            </div>
+          </div>
+          
+          <div className="flex justify-center space-x-2 pb-1">
+            {/* Botões de filtro (Todos, Filmes, Séries) */}
+            <button
+              onClick={() => setFiltroTipo('todos')}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                filtroTipo === 'todos' 
+                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20' 
+                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
+              }`}
+            >
+              Todos
+            </button>
+            <button
+              onClick={() => setFiltroTipo('filmes')}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                filtroTipo === 'filmes' 
+                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20' 
+                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
+              }`}
+            >
+              Filmes
+            </button>
+            <button
+              onClick={() => setFiltroTipo('series')}
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                filtroTipo === 'series' 
+                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20' 
+                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
+              }`}
+            >
+              Séries
+            </button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* Indicador de Carregamento Principal */}
+        {carregando && (
+          <div className="flex justify-center py-16">
+            <Loading size="large" text="Buscando conteúdo..." variant="film" />
+          </div>
+        )}
+
+        {/* Mensagem de Erro Principal */}
+        {!carregando && erro && (
+          <div className="text-center py-10 mx-4">
+            <div className="bg-red-400/10 border border-red-400/20 rounded-xl p-6 mb-4 inline-flex items-center max-w-lg mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span className="text-red-300">{erro}</span>
+            </div>
+            <button 
+              onClick={() => carregarConteudo(paginaAtual, filtroTipo, busca)} 
+              className="px-5 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-xl font-medium hover:from-purple-500 hover:to-purple-400 transition-colors shadow-lg shadow-purple-500/20"
+            >
+              Tentar Novamente
+            </button>
+          </div>
+        )}
+
+        {/* Lista de Conteúdo */} 
+        {!carregando && !erro && (
+          <> 
+            {conteudos.length > 0 ? (
+              <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} space-y-3 mb-6 mx-4`}>
+                {conteudos.map((item, index) => (
+                  <Link 
+                    key={`${item.tipo}-${item.id}`}
+                    href={item.tipo === 'filme' ? `/conteudo/${item.id}` : `/serie/${item.id}`}
+                    className={`flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/5 p-3 rounded-xl shadow-lg hover:bg-white/10 transition-all duration-300 group animate-fade-in`}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    {/* Capa */}
+                    <div className="relative w-14 h-20 flex-shrink-0 rounded-lg overflow-hidden shadow-md group-hover:shadow-purple-500/30 transition-all duration-300">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+                        src={item.tipo === 'filme' ? item.cover_url || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa' : item.capa || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa'}
+                        alt={`Capa de ${item.tipo === 'filme' ? item.title ?? '' : item.titulo ?? ''}`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="56px"
+                      />
+                    </div>
+                    
+                    {/* Informações (Título e Categoria) */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-semibold truncate text-white transition-colors duration-300 group-hover:text-purple-300">
+                        {item.tipo === 'filme' ? item.title : item.titulo}
+                      </h3>
+                      <p className="text-xs text-gray-400 group-hover:text-purple-200 transition-colors duration-300">
+                        {item.tipo === 'filme' ? 'Filme' : 'Série'}
+                      </p>
+                    </div>
+
+                    {/* Botão Ver */}
+                    <div className="ml-auto flex-shrink-0">
+                      <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium group-hover:shadow-lg group-hover:shadow-purple-500/20 transition-all duration-300">
+                        Ver
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center text-purple-200 mt-10 mx-4 py-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5">
+                {busca ? `Nenhum ${filtroTipo === 'todos' ? 'conteúdo' : filtroTipo === 'filmes' ? 'filme' : 'série'} encontrado para "${busca}".` : 'Nenhum conteúdo disponível.'}
+              </div>
+            )}
+
+            {/* Controles de Paginação */} 
+            {totalPaginas > 1 && (
+              <div className="flex justify-center items-center gap-3 mt-8 pb-8 mx-4">
+                <button
+                  onClick={() => mudarPagina(paginaAtual - 1)}
+                  disabled={paginaAtual === 1 || carregando}
+                  className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <span className="text-sm text-purple-200 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
+                  Página {paginaAtual} de {totalPaginas}
+                </span>
+                <button
+                  onClick={() => mudarPagina(paginaAtual + 1)}
+                  disabled={paginaAtual === totalPaginas || carregando}
+                  className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </>
+        )}
     </div>
+    </main>
   );
 }

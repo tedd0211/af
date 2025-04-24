@@ -1,0 +1,2109 @@
+[
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "pablohehenriqueviegas.ph@gmail.com"
+      },
+      "requestMetadata": {
+        "callerIp": "187.60.117.99",
+        "requestAttributes": {
+          "time": "2025-04-24T17:45:09.159456Z",
+          "auth": {}
+        },
+        "destinationAttributes": {}
+      },
+      "serviceName": "appengine.googleapis.com",
+      "methodName": "google.appengine.v1.Versions.CreateVersion",
+      "authorizationInfo": [
+        {
+          "resource": "apps/biblioteca-viper/services/default/versions/20250424t144501",
+          "permission": "appengine.versions.create",
+          "granted": true,
+          "resourceAttributes": {},
+          "permissionType": "ADMIN_WRITE"
+        }
+      ],
+      "resourceName": "apps/biblioteca-viper/services/default/versions/20250424t144501",
+      "serviceData": {
+        "@type": "type.googleapis.com/google.appengine.v1.AuditData",
+        "createVersion": {
+          "request": {
+            "parent": "apps/biblioteca-viper/services/default",
+            "version": {
+              "id": "20250424t144501",
+              "automaticScaling": {
+                "standardSchedulerSettings": {
+                  "maxInstances": 30
+                }
+              },
+              "instanceClass": "F2",
+              "runtime": "nodejs20",
+              "envVariables": {
+                "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZianlkd2d5dGNnaWZjaGdweXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwMDEzNTYsImV4cCI6MjA1ODU3NzM1Nn0.FXzWnKYvGR4sXmoTRWHFvT_L0jSJWh58MPQlWj3ta0o",
+                "NEXT_PUBLIC_SUPABASE_URL": "https://fbjydwgytcgifchgpywo.supabase.co"
+              },
+              "entrypoint": {
+                "shell": ""
+              },
+              "buildEnvVariables": {
+                "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZianlkd2d5dGNnaWZjaGdweXdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMwMDEzNTYsImV4cCI6MjA1ODU3NzM1Nn0.FXzWnKYvGR4sXmoTRWHFvT_L0jSJWh58MPQlWj3ta0o",
+                "NEXT_PUBLIC_SUPABASE_URL": "https://fbjydwgytcgifchgpywo.supabase.co"
+              }
+            }
+          }
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "southamerica-east1"
+        ]
+      }
+    },
+    "insertId": "mitqk9d36ci",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "zone": "",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:45:08.777463Z",
+    "severity": "NOTICE",
+    "logName": "projects/biblioteca-viper/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "4a4b69a8-f7b4-4aff-a1eb-49fa0bec342f",
+      "producer": "appengine.googleapis.com",
+      "first": true
+    },
+    "receiveTimestamp": "2025-04-24T17:45:10.156873671Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "principalEmail": "pablohehenriqueviegas.ph@gmail.com"
+      },
+      "requestMetadata": {
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "appengine.googleapis.com",
+      "methodName": "google.appengine.v1.Versions.CreateVersion",
+      "resourceName": "apps/biblioteca-viper/services/default/versions/20250424t144501",
+      "resourceLocation": {
+        "currentLocations": [
+          "southamerica-east1"
+        ]
+      }
+    },
+    "insertId": "-3vm1nmd1cq4",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:49:48.825589Z",
+    "severity": "NOTICE",
+    "logName": "projects/biblioteca-viper/logs/cloudaudit.googleapis.com%2Factivity",
+    "operation": {
+      "id": "4a4b69a8-f7b4-4aff-a1eb-49fa0bec342f",
+      "producer": "appengine.googleapis.com",
+      "last": true
+    },
+    "receiveTimestamp": "2025-04-24T17:49:49.202848588Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79ee00ff0c8d8fa2c7c8ad0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:38.825721Z",
+      "endTime": "2025-04-24T17:50:42.601201Z",
+      "latency": "3.775480s",
+      "megaCycles": "5004",
+      "method": "GET",
+      "resource": "/",
+      "httpVersion": "HTTP/1.1",
+      "status": 307,
+      "responseSize": "186",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "wasLoadingRequest": true,
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "line": [
+        {
+          "time": "2025-04-24T17:50:42.601175Z",
+          "severity": "INFO",
+          "logMessage": "This request caused a new process to be started for your application, and thus caused your application code to be loaded for the first time. This request may thus take longer and use more CPU than a typical request for your application."
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "054ee38577ea322ebc5d863a69d1b555",
+      "first": true,
+      "traceSampled": true,
+      "spanId": "f626e7aa42e9e986"
+    },
+    "insertId": "680a79f200092d2a9e2eb9de",
+    "httpRequest": {
+      "status": 307
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:38.825721Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79ee00ff0c8d8fa2c7c8ad0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/054ee38577ea322ebc5d863a69d1b555",
+    "receiveTimestamp": "2025-04-24T17:50:42.605227839Z",
+    "spanId": "f626e7aa42e9e986",
+    "traceSampled": true
+  },
+  {
+    "textPayload": "[pid1] started [session:GM8ZH73]",
+    "insertId": "680a79ef0001342581c3970b",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.078885Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.082174532Z"
+  },
+  {
+    "textPayload": "[pid1-app] Using app start info from /srv/.googleconfig/app_start.json: &main.appStart{Entrypoint:struct { Type string \"json:\\\"type\\\"\"; UnparsedValue string \"json:\\\"unparsed_value\\\"\"; Command string \"json:\\\"command\\\"\"; WorkDir string \"json:\\\"workdir\\\"\" }{Type:\"Default\", UnparsedValue:\"\", Command:\"/serve\", WorkDir:\"\"}, EntrypointFromAppYAML:\"\", EntrypointContents:\"\", Runtime:\"nodejs20\"} [session:GM8ZH73]",
+    "insertId": "680a79ef00013c691d9ded51",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.081001Z",
+    "severity": "DEBUG",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[pid1] Starting processes [app nginx] [session:GM8ZH73]",
+    "insertId": "680a79ef00013d9813477da9",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.081304Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[pid1-app] app has no prerequisites, starting immediately [session:GM8ZH73]",
+    "insertId": "680a79ef00014311bff293ee",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.082705Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[pid1-nginx] nginx waiting for any of 4 prerequisite(s): [portbind:tcp:127.0.0.1:8081 portbind:tcp:localhost:8080 portbind:tcp:localhost:8081 portbind:unix:/tmp/google-config/app.sock] [session:GM8ZH73]",
+    "insertId": "680a79ef000144005441aec0",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.082944Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[pid1-app] Starting app (pid 12): /serve [session:GM8ZH73]",
+    "insertId": "680a79ef00016a66584c045c",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.092774Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[serve] Serve started.",
+    "insertId": "680a79ef0001a136137d1afa",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.106806Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[serve] Args: {runtimeLanguage:nodejs runtimeName:nodejs20 memoryMB:768 positional:[]}",
+    "insertId": "680a79ef0001a26468b42eb9",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.107108Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[serve] Running /bin/sh -c exec next start -p $PORT",
+    "insertId": "680a79ef0001a952a2342d3e",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:39.108882Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:39.415099841Z"
+  },
+  {
+    "textPayload": "[pid1-nginx] Successfully connected to 127.0.0.1:8081 after 1.690966488s [session:GM8ZH73]",
+    "insertId": "680a79f0000bd0a81ff9b010",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.774312Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:41.079734752Z"
+  },
+  {
+    "textPayload": "[pid1-nginx] Successfully connected to localhost:8081 after 1.691298209s [session:GM8ZH73]",
+    "insertId": "680a79f0000bd20f34681540",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.774671Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:41.079734752Z"
+  },
+  {
+    "textPayload": "[pid1-nginx] Creating config at /tmp/nginxconf-2555466226/nginx.conf [session:GM8ZH73]",
+    "insertId": "680a79f0000bd34731a1467a",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.774983Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:41.079734752Z"
+  },
+  {
+    "textPayload": "[pid1-nginx] Starting nginx (pid 25): /usr/sbin/nginx -c /tmp/nginxconf-2555466226/nginx.conf [session:GM8ZH73]",
+    "insertId": "680a79f0000beac46b9daacb",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.780996Z",
+    "severity": "INFO",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/%2Fvar%2Flog%2Fgoogle_init.log",
+    "receiveTimestamp": "2025-04-24T17:50:41.079734752Z"
+  },
+  {
+    "textPayload": "   ▲ Next.js 15.3.1",
+    "insertId": "680a79f0000bec791e8b9d42",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.781433Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stdout",
+    "receiveTimestamp": "2025-04-24T17:50:40.783921142Z"
+  },
+  {
+    "textPayload": "   - Local:        http://localhost:8081",
+    "insertId": "680a79f0000bee2ebb489296",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.781870Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stdout",
+    "receiveTimestamp": "2025-04-24T17:50:41.117728980Z"
+  },
+  {
+    "textPayload": "   - Network:      http://169.254.8.1:8081",
+    "insertId": "680a79f0000bee6e5be82912",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.781934Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stdout",
+    "receiveTimestamp": "2025-04-24T17:50:41.117728980Z"
+  },
+  {
+    "textPayload": " ✓ Starting...",
+    "insertId": "680a79f0000bef4c80087955",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:40.782156Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stdout",
+    "receiveTimestamp": "2025-04-24T17:50:41.117728980Z"
+  },
+  {
+    "textPayload": " ⚠ \"next start\" does not work with \"output: standalone\" configuration. Use \"node .next/standalone/server.js\" instead.",
+    "insertId": "680a79f20004be5dcc4eb8a1",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:42.310877Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stderr",
+    "receiveTimestamp": "2025-04-24T17:50:42.314241993Z"
+  },
+  {
+    "textPayload": " ✓ Ready in 2.7s",
+    "insertId": "680a79f20006dd04a210a578",
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:42.449796Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/stdout",
+    "receiveTimestamp": "2025-04-24T17:50:42.782862218Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f200ff0a3c462a6d8e430001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:42.674036Z",
+      "endTime": "2025-04-24T17:50:42.969833Z",
+      "latency": "0.295797s",
+      "megaCycles": "1003",
+      "method": "GET",
+      "resource": "/login",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "3724",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "3c4b13450989018ebc5d863a69d1ba8b",
+      "first": true,
+      "spanId": "36c7309fc06c388c"
+    },
+    "insertId": "680a79f2000eccea0005fcde",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:42.674036Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f200ff0a3c462a6d8e430001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/3c4b13450989018ebc5d863a69d1ba8b",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "36c7309fc06c388c"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff0121a641b4f3d30001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.077988Z",
+      "endTime": "2025-04-24T17:50:43.078949Z",
+      "latency": "0.000961s",
+      "method": "GET",
+      "resource": "/_next/static/css/62308339c2b9950b.css",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:43.078936Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/css/62308339c2b9950b.css"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "06c316ca960807bdbc5d863a69d1b83c",
+      "first": true,
+      "spanId": "c5126abf978b08cf"
+    },
+    "insertId": "680a79f30001350ffc44f0f8",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.077988Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff0121a641b4f3d30001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/06c316ca960807bdbc5d863a69d1b83c",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "c5126abf978b08cf"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff01235cd237eb00ff0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.079059Z",
+      "endTime": "2025-04-24T17:50:43.079883Z",
+      "latency": "0.000824s",
+      "method": "GET",
+      "resource": "/_next/static/media/a34f9d1faa5f3315-s.p.woff2",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "48556",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "3b718e0d23a999fdbc5d863a69d1bf67",
+      "first": true,
+      "spanId": "1d91332e067f38d8"
+    },
+    "insertId": "680a79f300013858b9705735",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.079059Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff01235cd237eb00ff0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/3b718e0d23a999fdbc5d863a69d1bf67",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "1d91332e067f38d8"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff0293f576c94aba0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177386Z",
+      "endTime": "2025-04-24T17:50:43.178491Z",
+      "latency": "0.001105s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/851-c6952f3282869f27.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "127923",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "28c49ea5e5b92d4dbc5d863a69d1b6d3",
+      "first": true,
+      "spanId": "ec5961ee31d4c04c"
+    },
+    "insertId": "680a79f30002b9e231185974",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177386Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff0293f576c94aba0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/28c49ea5e5b92d4dbc5d863a69d1b6d3",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "ec5961ee31d4c04c"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff026af87d314c1b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177413Z",
+      "endTime": "2025-04-24T17:50:43.178459Z",
+      "latency": "0.001046s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/main-app-cb4c4999bdb21bfd.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:43.178443Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/main-app-cb4c4999bdb21bfd.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "82fe28452d0937eebc5d863a69d1b9a4",
+      "first": true,
+      "spanId": "be472e5537443c2d"
+    },
+    "insertId": "680a79f30002b9d593c7b44d",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177413Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff026af87d314c1b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/82fe28452d0937eebc5d863a69d1b9a4",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "be472e5537443c2d"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff027e2a2e90cc320001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177459Z",
+      "endTime": "2025-04-24T17:50:43.178491Z",
+      "latency": "0.001032s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/webpack-725de1b27aa90ae9.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "3458",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "4c29f1f763d67c36bc5d863a69d1b4a6",
+      "first": true,
+      "spanId": "fc541afa25d81524"
+    },
+    "insertId": "680a79f30002b9c201a566a2",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177459Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff027e2a2e90cc320001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/4c29f1f763d67c36bc5d863a69d1b4a6",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "fc541afa25d81524"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff0280598cb71f5b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177678Z",
+      "endTime": "2025-04-24T17:50:43.178515Z",
+      "latency": "0.000837s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/4bd1b696-8483056b515484e0.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "168413",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "fea282fc63f85175bc5d863a69d1b87d",
+      "first": true,
+      "spanId": "9a1720bb8273484b"
+    },
+    "insertId": "680a79f30002b9bbab9705b0",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177678Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff0280598cb71f5b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/fea282fc63f85175bc5d863a69d1b87d",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "9a1720bb8273484b"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff027cfe5c154b070001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177856Z",
+      "endTime": "2025-04-24T17:50:43.178992Z",
+      "latency": "0.001136s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/app/login/page-24f57ec32bd4d819.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:43.178987Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/app/login/page-24f57ec32bd4d819.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "0d6183807a31dd84bc5d863a69d1bd7b",
+      "first": true,
+      "spanId": "ba2c7466403cbbc0"
+    },
+    "insertId": "680a79f30002bba2c64d8659",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177856Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff027cfe5c154b070001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/0d6183807a31dd84bc5d863a69d1bd7b",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "ba2c7466403cbbc0"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff027f1150d8b1250001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.177931Z",
+      "endTime": "2025-04-24T17:50:43.179189Z",
+      "latency": "0.001258s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/684-1cc53b01a8bb65d3.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "174923",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "3bcb9f9498c20a49bc5d863a69d1bbd1",
+      "first": true,
+      "spanId": "ee7433bb4b708485"
+    },
+    "insertId": "680a79f30002bc5927abd9eb",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.177931Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff027f1150d8b1250001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/3bcb9f9498c20a49bc5d863a69d1bbd1",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "ee7433bb4b708485"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79f300ff02a7ee71d8326e0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:43.178537Z",
+      "endTime": "2025-04-24T17:50:43.179503Z",
+      "latency": "0.000966s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/77-cc931e79c2f523f4.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "16285",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "appEngineRelease": "1.9.71",
+      "traceId": "2b03ec7dd2b3fed6bc5d863a69d1bc54",
+      "first": true,
+      "spanId": "5dcdd7d23dbc7302"
+    },
+    "insertId": "680a79f30002bd73321f869e",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:43.178537Z",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79f300ff02a7ee71d8326e0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/2b03ec7dd2b3fed6bc5d863a69d1bc54",
+    "receiveTimestamp": "2025-04-24T17:50:43.270368815Z",
+    "spanId": "5dcdd7d23dbc7302"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79fd00ff08d600ff60e9ab5f0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:53.581820Z",
+      "endTime": "2025-04-24T17:50:53.593241Z",
+      "latency": "0.011421s",
+      "megaCycles": "79",
+      "method": "GET",
+      "resource": "/login",
+      "httpVersion": "HTTP/1.1",
+      "status": 304,
+      "responseSize": "234",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "2f4ca516b5f3ba3d43aefdf8ba2db82e",
+      "first": true,
+      "traceSampled": true,
+      "spanId": "1de1d32e4dc8b801"
+    },
+    "insertId": "680a79fd00090ddf1284ad4e",
+    "httpRequest": {
+      "status": 304
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:53.581820Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79fd00ff08d600ff60e9ab5f0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/2f4ca516b5f3ba3d43aefdf8ba2db82e",
+    "receiveTimestamp": "2025-04-24T17:50:53.927978224Z",
+    "spanId": "1de1d32e4dc8b801",
+    "traceSampled": true
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79fd00ff0a9761d7d45f890001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:53.697003Z",
+      "endTime": "2025-04-24T17:50:53.698237Z",
+      "latency": "0.001234s",
+      "method": "GET",
+      "resource": "/_next/static/css/62308339c2b9950b.css",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:53.698226Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/css/62308339c2b9950b.css"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "6e188c6dc7e9065043aefdf8ba2dbeca",
+      "first": true,
+      "spanId": "c20948af03cead46"
+    },
+    "insertId": "680a79fd000aa82a3328d3a6",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:53.697003Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79fd00ff0a9761d7d45f890001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/6e188c6dc7e9065043aefdf8ba2dbeca",
+    "receiveTimestamp": "2025-04-24T17:50:53.927978224Z",
+    "spanId": "c20948af03cead46"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79fd00ff0ad58b601e28670001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:53.712744Z",
+      "endTime": "2025-04-24T17:50:53.713849Z",
+      "latency": "0.001105s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/main-app-cb4c4999bdb21bfd.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:53.713842Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/main-app-cb4c4999bdb21bfd.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "d306449f8b5c6ba743aefdf8ba2db757",
+      "first": true,
+      "spanId": "2b1826067428f042"
+    },
+    "insertId": "680a79fd000ae50091f94a4c",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:53.712744Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79fd00ff0ad58b601e28670001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/d306449f8b5c6ba743aefdf8ba2db757",
+    "receiveTimestamp": "2025-04-24T17:50:53.927978224Z",
+    "spanId": "2b1826067428f042"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a79fd00ff0bdb3bd4cb45ef0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:50:53.779717Z",
+      "endTime": "2025-04-24T17:50:53.780566Z",
+      "latency": "0.000849s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/app/login/page-24f57ec32bd4d819.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:50:53.780552Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/app/login/page-24f57ec32bd4d819.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "372d36443fc2e9e343aefdf8ba2db35d",
+      "first": true,
+      "spanId": "c3252d232d24e927"
+    },
+    "insertId": "680a79fd000be9ea01a54504",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:50:53.779717Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a79fd00ff0bdb3bd4cb45ef0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/372d36443fc2e9e343aefdf8ba2db35d",
+    "receiveTimestamp": "2025-04-24T17:50:53.927978224Z",
+    "spanId": "c3252d232d24e927"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a5b00ff092dfc6b46a56d0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:27.604738Z",
+      "endTime": "2025-04-24T17:52:27.617092Z",
+      "latency": "0.012354s",
+      "megaCycles": "711",
+      "method": "GET",
+      "resource": "/",
+      "httpVersion": "HTTP/1.1",
+      "status": 307,
+      "responseSize": "128",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "66d19f15615b5217fb933519715b18eb",
+      "first": true,
+      "traceSampled": true,
+      "spanId": "76ff3a699b05497d"
+    },
+    "insertId": "680a7a5b00096af7b5f2710a",
+    "httpRequest": {
+      "status": 307
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:27.604738Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a5b00ff092dfc6b46a56d0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/66d19f15615b5217fb933519715b18eb",
+    "receiveTimestamp": "2025-04-24T17:52:27.622550625Z",
+    "spanId": "76ff3a699b05497d",
+    "traceSampled": true
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a5b00ff0a68398391eaf80001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:27.684855Z",
+      "endTime": "2025-04-24T17:52:27.696412Z",
+      "latency": "0.011557s",
+      "megaCycles": "25",
+      "method": "GET",
+      "resource": "/login",
+      "httpVersion": "HTTP/1.1",
+      "status": 304,
+      "responseSize": "234",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "4871c525a7596dc3fb933519715b19fa",
+      "first": true,
+      "spanId": "5729733bfa5e083c"
+    },
+    "insertId": "680a7a5b000aa0cd9c4636cc",
+    "httpRequest": {
+      "status": 304
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:27.684855Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a5b00ff0a68398391eaf80001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/4871c525a7596dc3fb933519715b19fa",
+    "receiveTimestamp": "2025-04-24T17:52:27.954914277Z",
+    "spanId": "5729733bfa5e083c"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a5b00ff0bce5801b457e10001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:27.777225Z",
+      "endTime": "2025-04-24T17:52:27.778468Z",
+      "latency": "0.001243s",
+      "method": "GET",
+      "resource": "/_next/static/css/62308339c2b9950b.css",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:27.778458Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/css/62308339c2b9950b.css"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "7f2fd225b24ce99dfb933519715b1834",
+      "first": true,
+      "spanId": "bccdf3de82688a6a"
+    },
+    "insertId": "680a7a5b000be181e3c2fa56",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:27.777225Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a5b00ff0bce5801b457e10001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/7f2fd225b24ce99dfb933519715b1834",
+    "receiveTimestamp": "2025-04-24T17:52:27.954914277Z",
+    "spanId": "bccdf3de82688a6a"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a5b00ff0c0503dd1e87520001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:27.791435Z",
+      "endTime": "2025-04-24T17:52:27.792135Z",
+      "latency": "0.000700s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/main-app-cb4c4999bdb21bfd.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:27.792129Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/main-app-cb4c4999bdb21bfd.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "95149af5d8bd75dafb933519715b1087",
+      "first": true,
+      "spanId": "597efbd9d94739a8"
+    },
+    "insertId": "680a7a5b000c16c1990a6463",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:27.791435Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a5b00ff0c0503dd1e87520001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/95149af5d8bd75dafb933519715b1087",
+    "receiveTimestamp": "2025-04-24T17:52:27.954914277Z",
+    "spanId": "597efbd9d94739a8"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a5b00ff0ce314af1d6a880001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:27.847689Z",
+      "endTime": "2025-04-24T17:52:27.848984Z",
+      "latency": "0.001295s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/app/login/page-24f57ec32bd4d819.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:27.848974Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/app/login/page-24f57ec32bd4d819.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "760e70fd858242fafb933519715b14e5",
+      "first": true,
+      "spanId": "3a0a6526a89858a3"
+    },
+    "insertId": "680a7a5b000cf51db27ca73d",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:27.847689Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a5b00ff0ce314af1d6a880001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/760e70fd858242fafb933519715b14e5",
+    "receiveTimestamp": "2025-04-24T17:52:27.954914277Z",
+    "spanId": "3a0a6526a89858a3"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a6700ff026fdcb2bdfb350001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:39.164320Z",
+      "endTime": "2025-04-24T17:52:39.179702Z",
+      "latency": "0.015382s",
+      "megaCycles": "122",
+      "method": "GET",
+      "resource": "/login?",
+      "httpVersion": "HTTP/1.1",
+      "status": 200,
+      "responseSize": "3724",
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "c5b339b617adf2cc8fb2c98eb7dc058f",
+      "first": true,
+      "traceSampled": true,
+      "spanId": "a336da8f1cdadfc9"
+    },
+    "insertId": "680a7a670002be7ba677c22e",
+    "httpRequest": {
+      "status": 200
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "version_id": "20250424t144501",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:39.164320Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a6700ff026fdcb2bdfb350001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/c5b339b617adf2cc8fb2c98eb7dc058f",
+    "receiveTimestamp": "2025-04-24T17:52:39.276175193Z",
+    "spanId": "a336da8f1cdadfc9",
+    "traceSampled": true
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a6700ff04158c0325baa60001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:39.271511Z",
+      "endTime": "2025-04-24T17:52:39.272897Z",
+      "latency": "0.001386s",
+      "method": "GET",
+      "resource": "/_next/static/css/62308339c2b9950b.css",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login?",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:39.272884Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/css/62308339c2b9950b.css"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "9671e8641b8732918fb2c98eb7dc0eeb",
+      "first": true,
+      "spanId": "d8724d772f449fbf"
+    },
+    "insertId": "680a7a6700042ab8018fbf9a",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:39.271511Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a6700ff04158c0325baa60001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/9671e8641b8732918fb2c98eb7dc0eeb",
+    "receiveTimestamp": "2025-04-24T17:52:39.608167558Z",
+    "spanId": "d8724d772f449fbf"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a6700ff04375c6fc500ff280001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:39.279420Z",
+      "endTime": "2025-04-24T17:52:39.280631Z",
+      "latency": "0.001211s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/main-app-cb4c4999bdb21bfd.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login?",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:39.280623Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/main-app-cb4c4999bdb21bfd.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "686e886377f4dba48fb2c98eb7dc0baf",
+      "first": true,
+      "spanId": "dc7a0365317c2cc1"
+    },
+    "insertId": "680a7a67000448e075e5089a",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:39.279420Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a6700ff04375c6fc500ff280001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/686e886377f4dba48fb2c98eb7dc0baf",
+    "receiveTimestamp": "2025-04-24T17:52:39.608167558Z",
+    "spanId": "dc7a0365317c2cc1"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7a6700ff052dc9f73adb1b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:52:39.342519Z",
+      "endTime": "2025-04-24T17:52:39.343605Z",
+      "latency": "0.001086s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/app/login/page-24f57ec32bd4d819.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login?",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:52:39.343590Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/app/login/page-24f57ec32bd4d819.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "8a3b20386949fdcb8fb2c98eb7dc06b4",
+      "first": true,
+      "spanId": "598a6fe48b800d2c"
+    },
+    "insertId": "680a7a6700053ef4a7b939c3",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:52:39.342519Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7a6700ff052dc9f73adb1b0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/8a3b20386949fdcb8fb2c98eb7dc06b4",
+    "receiveTimestamp": "2025-04-24T17:52:39.608167558Z",
+    "spanId": "598a6fe48b800d2c"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7b3100ff097697bd22e5a70001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:56:01.623698Z",
+      "endTime": "2025-04-24T17:56:01.633922Z",
+      "latency": "0.010224s",
+      "megaCycles": "525",
+      "method": "GET",
+      "resource": "/",
+      "httpVersion": "HTTP/1.1",
+      "status": 307,
+      "responseSize": "128",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "857b13d4ee8f5cf58e8f21affae1ed87",
+      "first": true,
+      "traceSampled": true,
+      "spanId": "cbbd87be824ec232"
+    },
+    "insertId": "680a7b310009acaf4d9fff56",
+    "httpRequest": {
+      "status": 307
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "module_id": "default",
+        "zone": "southamerica-east1-1",
+        "version_id": "20250424t144501",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:56:01.623698Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7b3100ff097697bd22e5a70001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/857b13d4ee8f5cf58e8f21affae1ed87",
+    "receiveTimestamp": "2025-04-24T17:56:01.637903786Z",
+    "spanId": "cbbd87be824ec232",
+    "traceSampled": true
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7b3100ff0b5fed7c4608950001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:56:01.748835Z",
+      "endTime": "2025-04-24T17:56:01.757554Z",
+      "latency": "0.008719s",
+      "megaCycles": "17",
+      "method": "GET",
+      "resource": "/login",
+      "httpVersion": "HTTP/1.1",
+      "status": 304,
+      "responseSize": "234",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "urlMapEntry": "auto",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "instanceId": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab",
+      "appEngineRelease": "1.9.71",
+      "traceId": "ab1b653a0dcc979b8e8f21affae1eafc",
+      "first": true,
+      "spanId": "7b33165dd54648f8"
+    },
+    "insertId": "680a7b31000b8fa418cbf840",
+    "httpRequest": {
+      "status": 304
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "module_id": "default",
+        "project_id": "biblioteca-viper"
+      }
+    },
+    "timestamp": "2025-04-24T17:56:01.748835Z",
+    "labels": {
+      "clone_id": "00afae804326398c43067e68b531546e06f1464075d281ca76363877e432576fdd49e1e1fc4ce8a45de8157455445d0122a0240005cc00866e515ab3def615634562cbf19c58451bc471dac9ab"
+    },
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7b3100ff0b5fed7c4608950001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/ab1b653a0dcc979b8e8f21affae1eafc",
+    "receiveTimestamp": "2025-04-24T17:56:01.973250503Z",
+    "spanId": "7b33165dd54648f8"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7b3100ff0ce1121b45d3c00001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:56:01.848212Z",
+      "endTime": "2025-04-24T17:56:01.849427Z",
+      "latency": "0.001215s",
+      "method": "GET",
+      "resource": "/_next/static/css/62308339c2b9950b.css",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:56:01.849415Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/css/62308339c2b9950b.css"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "cc9f5c6381aa0bb08e8f21affae1e270",
+      "first": true,
+      "spanId": "108dab5ddcaf97a4"
+    },
+    "insertId": "680a7b31000cf6be54eedaa4",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "module_id": "default",
+        "version_id": "20250424t144501"
+      }
+    },
+    "timestamp": "2025-04-24T17:56:01.848212Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7b3100ff0ce1121b45d3c00001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/cc9f5c6381aa0bb08e8f21affae1e270",
+    "receiveTimestamp": "2025-04-24T17:56:01.973250503Z",
+    "spanId": "108dab5ddcaf97a4"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7b3100ff0ebb6d2436cc9c0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:56:01.968592Z",
+      "endTime": "2025-04-24T17:56:01.969886Z",
+      "latency": "0.001294s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/app/login/page-24f57ec32bd4d819.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:56:01.969874Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/app/login/page-24f57ec32bd4d819.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "b0b3f195268ee1fb8e8f21affae1e945",
+      "first": true,
+      "spanId": "78e140db8b575e1b"
+    },
+    "insertId": "680a7b31000ecd3bcd607aca",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:56:01.968592Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7b3100ff0ebb6d2436cc9c0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/b0b3f195268ee1fb8e8f21affae1e945",
+    "receiveTimestamp": "2025-04-24T17:56:02.304282799Z",
+    "spanId": "78e140db8b575e1b"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.appengine.logging.v1.RequestLog",
+      "appId": "i~biblioteca-viper",
+      "versionId": "20250424t144501",
+      "requestId": "680a7b3100ff0eb9576444d19e0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "ip": "187.60.117.99",
+      "startTime": "2025-04-24T17:56:01.969339Z",
+      "endTime": "2025-04-24T17:56:01.970484Z",
+      "latency": "0.001145s",
+      "method": "GET",
+      "resource": "/_next/static/chunks/main-app-cb4c4999bdb21bfd.js",
+      "httpVersion": "HTTP/1.1",
+      "status": 404,
+      "referrer": "https://biblioteca-viper.rj.r.appspot.com/login",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+      "host": "biblioteca-viper.rj.r.appspot.com",
+      "instanceIndex": -1,
+      "finished": true,
+      "line": [
+        {
+          "time": "2025-04-24T17:56:01.970474Z",
+          "severity": "WARNING",
+          "logMessage": "Static file referenced by handler not found: .next/static/chunks/main-app-cb4c4999bdb21bfd.js"
+        }
+      ],
+      "appEngineRelease": "1.9.71",
+      "traceId": "66ac4130ea74bf818e8f21affae1e8db",
+      "first": true,
+      "spanId": "5608d6b106ec4007"
+    },
+    "insertId": "680a7b31000ecf8033a4fb01",
+    "httpRequest": {
+      "status": 404
+    },
+    "resource": {
+      "type": "gae_app",
+      "labels": {
+        "version_id": "20250424t144501",
+        "zone": "southamerica-east1-1",
+        "project_id": "biblioteca-viper",
+        "module_id": "default"
+      }
+    },
+    "timestamp": "2025-04-24T17:56:01.969339Z",
+    "severity": "WARNING",
+    "logName": "projects/biblioteca-viper/logs/appengine.googleapis.com%2Frequest_log",
+    "operation": {
+      "id": "680a7b3100ff0eb9576444d19e0001697e6269626c696f746563612d76697065720001323032353034323474313434353031000100",
+      "producer": "appengine.googleapis.com/request_id",
+      "first": true,
+      "last": true
+    },
+    "trace": "projects/biblioteca-viper/traces/66ac4130ea74bf818e8f21affae1e8db",
+    "receiveTimestamp": "2025-04-24T17:56:02.304282799Z",
+    "spanId": "5608d6b106ec4007"
+  }
+]

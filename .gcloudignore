@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Next.js (apenas o cache, não a pasta .next inteira)
+.next/cache/
+
+# Git
+.git/
+.gitignore
+
+# Arquivos de desenvolvimento
+*.md
+*.log
+.env.development
+.env.test
+
+# Outros
+.vscode/
+.DS_Store
+README.md
+LICENSE
+Dockerfile
+.dockerignore 
