@@ -4,7 +4,7 @@ import type { Configuration } from 'webpack';
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   images: {
-    domains: ['image.tmdb.org'],
+    domains: ['image.tmdb.org', 'srvdigital.fun'],
   },
   output: 'standalone',
   distDir: '.next',
@@ -26,6 +26,23 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/api/video/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
+          },
+        ],
+      },
     ];
   },
   webpack: (config: Configuration) => {
@@ -37,6 +54,14 @@ const nextConfig: NextConfig = {
       fs: false,
     };
     return config;
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/video/:path*',
+        destination: 'http://srvdigital.fun/movie/:path*',
+      },
+    ];
   },
 };
 

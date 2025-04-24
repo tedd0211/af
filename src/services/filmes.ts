@@ -44,6 +44,27 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
   }
 }
 
+function convertVideoUrl(url: string): string {
+  if (!url) return '';
+  
+  // Se a URL já for HTTPS, retorna ela mesma
+  if (url.startsWith('https://')) {
+    return url;
+  }
+  
+  // Se a URL for HTTP, converte para HTTPS
+  if (url.startsWith('http://')) {
+    return url.replace('http://', 'https://');
+  }
+  
+  // Se a URL for relativa ou de outro formato, usa o proxy
+  if (url.includes('srvdigital.fun')) {
+    return `/api/video/${url.split('/movie/')[1]}`;
+  }
+  
+  return url;
+}
+
 export async function getFilmeById(id: string): Promise<Filme | null> {
   try {
     const { data, error } = await supabase
@@ -60,6 +81,11 @@ export async function getFilmeById(id: string): Promise<Filme | null> {
       console.error('Erro ao buscar filme por ID:', error);
       throw error;
     }
+    
+    if (data) {
+      data.url_stream = convertVideoUrl(data.url_stream);
+    }
+    
     return data as Filme;
   } catch (error) {
     console.error('Erro inesperado ao buscar filme por ID:', error);
@@ -136,6 +162,10 @@ export async function getSerieById(id: string): Promise<Serie | null> {
       serieData.temporadas.forEach((temporada: any) => {
         if (temporada.episodios) {
           temporada.episodios.sort((a: any, b: any) => a.numero - b.numero);
+          // Converter URLs dos episódios
+          temporada.episodios.forEach((episodio: any) => {
+            episodio.url_video = convertVideoUrl(episodio.url_video);
+          });
         }
       });
     }
