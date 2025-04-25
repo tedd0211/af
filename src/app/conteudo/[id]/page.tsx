@@ -1,13 +1,12 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Filme } from '../../../data/mockData';
 import { getFilmeById } from '../../../services/filmes';
 import { getBunnyGuidByImdbId, getBunnyEmbedUrl } from '../../../services/bunnyStream';
 import Loading from '../../../components/Loading';
-import Header from '../../../components/Header';
 import Link from 'next/link';
 
 function formatDuration(minutes: number): string {
@@ -22,6 +21,7 @@ function formatDuration(minutes: number): string {
 
 export default function ConteudoPage() {
   const { id } = useParams();
+  const router = useRouter();
   const [filme, setFilme] = useState<Filme | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
@@ -120,11 +120,24 @@ export default function ConteudoPage() {
         <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
         <div className="absolute top-[30%] right-[-20%] w-[400px] h-[400px] rounded-full bg-pink-600/10 blur-3xl animate-pulse-slow animation-delay-1000"></div>
       </div>
-      
-      <Header showBackButton={true} />
+
+      {/* Cabeçalho Fixo */}
+      <div className="bg-gray-900/80 backdrop-blur-lg border-b border-white/10">
+        <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-4">
+          <button 
+            onClick={() => router.back()}
+            className="text-purple-300 hover:text-purple-200 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h1 className="text-xl font-bold text-purple-400 truncate">{filme?.title || 'Carregando...'}</h1>
+        </div>
+      </div>
       
       {/* Conteúdo principal */}
-      <div className="pt-16 relative z-10">
+      <div className="pt-20 relative z-10">
         <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
           {/* Cabeçalho com capa e informações básicas */}
           <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

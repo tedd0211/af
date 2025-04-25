@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -8,10 +8,10 @@ import { Serie, Temporada, Episodio } from '../../../data/mockData';
 import { getSerieById } from '../../../services/filmes';
 import { getBunnyEmbedUrl } from '../../../services/bunnyStream';
 import Loading from '../../../components/Loading';
-import Header from '../../../components/Header';
 
 export default function SeriePage() {
   const { id } = useParams();
+  const router = useRouter();
   const [serie, setSerie] = useState<Serie | null>(null);
   const [temporadaSelecionada, setTemporadaSelecionada] = useState<number | null>(null);
   const [episodioSelecionado, setEpisodioSelecionado] = useState<Episodio | null>(null);
@@ -67,6 +67,15 @@ export default function SeriePage() {
   const videoUrl = episodioSelecionado?.url_video || null;
   const bunnyUrl = episodioSelecionado?.bunny_guid ? getBunnyEmbedUrl(episodioSelecionado.bunny_guid) : null;
 
+  // Função para baixar o vídeo
+  function baixarVideo() {
+    if (!episodioSelecionado?.url_video) return;
+    const videoWindow = window.open('', '_blank');
+    if (videoWindow) {
+      videoWindow.location.href = episodioSelecionado.url_video;
+    }
+  }
+
   if (carregando) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900 flex items-center justify-center p-4">
@@ -104,167 +113,188 @@ export default function SeriePage() {
         <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
         <div className="absolute top-[30%] right-[-20%] w-[400px] h-[400px] rounded-full bg-pink-600/10 blur-3xl animate-pulse-slow animation-delay-1000"></div>
       </div>
-      
-      <Header showBackButton={true} />
+
+      {/* Cabeçalho */}
+      <div className="bg-gray-900/80 backdrop-blur-lg border-b border-white/10">
+        <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-4">
+          <button 
+            onClick={() => router.back()}
+            className="text-purple-300 hover:text-purple-200 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h1 className="text-xl font-bold text-purple-400 truncate">{serie?.titulo || 'Carregando...'}</h1>
+        </div>
+      </div>
       
       {/* Conteúdo principal */}
-      <div className="pt-16 relative z-10">
-        <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
-          {/* Cabeçalho com capa e informações básicas */}
-          <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex gap-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-4 shadow-xl">
-              {/* Capa da série */}
-              <div className="relative w-32 h-48 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src={serie.capa || 'https://via.placeholder.com/300x450/1a1a1a/ffffff?text=Sem+Capa'}
-                  alt={`Capa de ${serie.titulo}`}
-                  fill
-                  className="object-cover"
-                  sizes="128px"
-                  priority
-                />
-              </div>
-
-              {/* Informações básicas */}
-              <div className="flex-1 min-w-0">
-                <h1 className="text-xl font-bold text-white mb-2 line-clamp-2">{serie.titulo}</h1>
-                
-                <div className="text-purple-300 text-sm mb-3 flex items-center gap-2">
-                  {serie.ano && <span>{serie.ano}</span>}
-                </div>
-
-                {/* Gêneros */}
-                {serie.generos && serie.generos.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {serie.generos.map((genero, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-0.5 bg-white/5 backdrop-blur-sm border border-white/10 text-purple-200 rounded-full text-xs"
-                      >
-                        {genero}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Sinopse com altura limitada */}
-                {serie.sinopse && (
-                  <div className="relative">
-                    <div className="h-[72px] overflow-hidden">
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {serie.sinopse}
-                      </p>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-gray-900/80 to-transparent pointer-events-none"></div>
-                    <button
-                      onClick={() => setModalDescricaoAberto(true)}
-                      className="text-purple-400 text-sm hover:text-purple-300 transition-colors mt-1 flex items-center"
-                    >
-                      Ler mais
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </div>
-                )}
-              </div>
+      <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
+        {/* Cabeçalho com capa e informações básicas */}
+        <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex gap-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-4 shadow-xl">
+            {/* Capa da série */}
+            <div className="relative w-32 h-48 flex-shrink-0 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={serie.capa || 'https://via.placeholder.com/300x450/1a1a1a/ffffff?text=Sem+Capa'}
+                alt={`Capa de ${serie.titulo}`}
+                fill
+                className="object-cover"
+                sizes="128px"
+                priority
+              />
             </div>
-          </div>
 
-          {/* Selector de Temporadas e Episódios */}
-          {serie.temporadas && serie.temporadas.length > 0 && (
-            <div className={`space-y-4 transition-all duration-700 delay-200 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {/* Seletor de Temporadas */}
-              <div className="flex overflow-x-auto gap-2 py-2 scrollbar-hide no-scrollbar">
-                {serie.temporadas.map((temporada) => (
-                  <button
-                    key={temporada.id}
-                    onClick={() => setTemporadaSelecionada(temporada.numero)}
-                    className={`px-4 py-2 rounded-full text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 ${
-                      temporadaSelecionada === temporada.numero
-                        ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
-                        : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
-                    }`}
-                  >
-                    Temporada {temporada.numero}
-                  </button>
-                ))}
+            {/* Informações básicas */}
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl font-bold text-white mb-2 line-clamp-2">{serie.titulo}</h1>
+              
+              <div className="text-purple-300 text-sm mb-3 flex items-center gap-2">
+                {serie.ano && <span>{serie.ano}</span>}
               </div>
 
-              {/* Lista Horizontal de Episódios */}
-              {temporadaAtual?.episodios && (
-                <div className="space-y-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-4 shadow-xl">
-                  <h2 className="text-base font-semibold text-purple-300 mb-3">
-                    Episódios - {temporadaAtual.nome || `Temporada ${temporadaAtual.numero}`}
-                  </h2>
-                  <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide no-scrollbar">
-                    {temporadaAtual.episodios.map((episodio) => (
-                      <button
-                        key={episodio.id}
-                        onClick={() => selecionarEpisodio(episodio)}
-                        className={`flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl border-2 transition-all duration-300 ${
-                          episodioSelecionado?.id === episodio.id
-                            ? 'bg-purple-600/30 border-purple-500 text-purple-200 shadow-lg shadow-purple-500/20'
-                            : 'bg-white/5 backdrop-blur-sm border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30'
-                        }`}
-                        title={episodio.nome || `Episódio ${episodio.numero}`}
-                      >
-                        <span className="text-lg font-bold">
-                          {episodio.numero}
-                        </span>
-                      </button>
-                    ))}
+              {/* Gêneros */}
+              {serie.generos && serie.generos.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {serie.generos.map((genero, index) => (
+                    <span
+                      key={index}
+                      className="px-2 py-0.5 bg-white/5 backdrop-blur-sm border border-white/10 text-purple-200 rounded-full text-xs"
+                    >
+                      {genero}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Sinopse com altura limitada */}
+              {serie.sinopse && (
+                <div className="relative">
+                  <div className="h-[72px] overflow-hidden">
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {serie.sinopse}
+                    </p>
                   </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-gray-900/80 to-transparent pointer-events-none"></div>
+                  <button
+                    onClick={() => setModalDescricaoAberto(true)}
+                    className="text-purple-400 text-sm hover:text-purple-300 transition-colors mt-1 flex items-center"
+                  >
+                    Ler mais
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                 </div>
               )}
             </div>
-          )}
-
-          {/* Player de vídeo */}
-          {episodioSelecionado && (
-            <div className={`transition-all duration-700 delay-300 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-xl">
-                {carregandoEpisodio ? (
-                  <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Loading size="medium" variant="film" />
-                    </div>
-                  </div>
-                ) : bunnyUrl ? (
-                  <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-                    <iframe
-                      src={bunnyUrl}
-                      className="absolute top-0 left-0 w-full h-full border-0"
-                      allowFullScreen
-                      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                    ></iframe>
-                  </div>
-                ) : videoUrl ? (
-                  <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-                    <video
-                      src={videoUrl}
-                      controls
-                      className="absolute top-0 left-0 w-full h-full"
-                      poster={episodioSelecionado.imagem || serie.fundo}
-                      preload="metadata"
-                      controlsList="nodownload"
-                      playsInline
-                    >
-                      Seu navegador não suporta a reprodução de vídeos.
-                    </video>
-                  </div>
-                ) : (
-                  <div className="p-8 text-center text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-3 text-gray-500/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                    <p className="text-purple-300/70">Não há vídeo disponível para este episódio.</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+          </div>
         </div>
+
+        {/* Selector de Temporadas e Episódios */}
+        {serie.temporadas && serie.temporadas.length > 0 && (
+          <div className={`space-y-4 transition-all duration-700 delay-200 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Seletor de Temporadas */}
+            <div className="flex overflow-x-auto gap-2 py-2 scrollbar-hide no-scrollbar">
+              {serie.temporadas.map((temporada) => (
+                <button
+                  key={temporada.id}
+                  onClick={() => setTemporadaSelecionada(temporada.numero)}
+                  className={`px-4 py-2 rounded-full text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 ${
+                    temporadaSelecionada === temporada.numero
+                      ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
+                      : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
+                  }`}
+                >
+                  Temporada {temporada.numero}
+                </button>
+              ))}
+            </div>
+
+            {/* Lista Horizontal de Episódios */}
+            {temporadaAtual?.episodios && (
+              <div className="space-y-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-4 shadow-xl">
+                <h2 className="text-base font-semibold text-purple-300 mb-3">
+                  Episódios - {temporadaAtual.nome || `Temporada ${temporadaAtual.numero}`}
+                </h2>
+                <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide no-scrollbar">
+                  {temporadaAtual.episodios.map((episodio) => (
+                    <button
+                      key={episodio.id}
+                      onClick={() => selecionarEpisodio(episodio)}
+                      className={`flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl border-2 transition-all duration-300 ${
+                        episodioSelecionado?.id === episodio.id
+                            ? 'bg-purple-600/30 border-purple-500 text-purple-200 shadow-lg shadow-purple-500/20'
+                            : 'bg-white/5 backdrop-blur-sm border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30'
+                      }`}
+                      title={episodio.nome || `Episódio ${episodio.numero}`}
+                    >
+                      <span className="text-lg font-bold">
+                        {episodio.numero}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Player de vídeo */}
+        {episodioSelecionado && (
+          <div className={`transition-all duration-700 delay-300 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-xl">
+              {carregandoEpisodio ? (
+                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Loading size="medium" variant="film" />
+                  </div>
+                </div>
+              ) : bunnyUrl ? (
+                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                  <iframe
+                    src={bunnyUrl}
+                    className="absolute top-0 left-0 w-full h-full border-0"
+                    allowFullScreen
+                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                  ></iframe>
+                </div>
+              ) : videoUrl ? (
+                <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+                  <video
+                    src={videoUrl}
+                    controls
+                    className="absolute top-0 left-0 w-full h-full"
+                    poster={episodioSelecionado.imagem || serie.fundo}
+                    preload="metadata"
+                    controlsList="nodownload"
+                    playsInline
+                  >
+                    Seu navegador não suporta a reprodução de vídeos.
+                  </video>
+                </div>
+              ) : (
+                <div className="p-8 text-center text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-3 text-gray-500/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <p className="text-purple-300/70">Não há vídeo disponível para este episódio.</p>
+                </div>
+              )}
+            </div>
+
+            {/* Botão de Download */}
+            {episodioSelecionado.url_video && (
+              <button
+                onClick={baixarVideo}
+                className="block w-full mt-4 bg-gradient-to-r from-purple-600 to-purple-500 text-white text-center py-4 rounded-xl font-medium hover:from-purple-500 hover:to-purple-400 transition-colors shadow-lg shadow-purple-500/20"
+              >
+                Baixar Agora
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Modal de sinopse completa */}

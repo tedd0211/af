@@ -31,8 +31,14 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
     const totalItens = count ?? 0;
     const totalPaginas = Math.ceil(totalItens / itensPorPagina);
 
+    const filmesFiltrados = (data as Filme[]) || [];
+    const filmesAjustados = filmesFiltrados.map(filme => ({
+      ...filme,
+      url_stream: adjustVideoUrl(filme.url_stream)
+    }));
+
     return {
-      data: (data as Filme[]) || [],
+      data: filmesAjustados,
       totalItens: totalItens,
       paginaAtual: pagina,
       itensPorPagina: itensPorPagina,
@@ -44,24 +50,12 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
   }
 }
 
-function convertVideoUrl(url: string): string {
+function adjustVideoUrl(url: string | undefined): string {
   if (!url) return '';
-  
-  // Se a URL já for HTTPS, retorna ela mesma
-  if (url.startsWith('https://')) {
-    return url;
+  // Se a URL começar com https:// e contiver srvdigital.fun, muda para http://
+  if (url.startsWith('https://') && url.includes('srvdigital.fun')) {
+    return url.replace('https://', 'http://');
   }
-  
-  // Se a URL for HTTP, converte para HTTPS
-  if (url.startsWith('http://')) {
-    return url.replace('http://', 'https://');
-  }
-  
-  // Se a URL for relativa ou de outro formato, usa o proxy
-  if (url.includes('srvdigital.fun')) {
-    return `/api/video/${url.split('/movie/')[1]}`;
-  }
-  
   return url;
 }
 
@@ -83,7 +77,7 @@ export async function getFilmeById(id: string): Promise<Filme | null> {
     }
     
     if (data) {
-      data.url_stream = convertVideoUrl(data.url_stream);
+      data.url_stream = adjustVideoUrl(data.url_stream);
     }
     
     return data as Filme;
@@ -121,8 +115,14 @@ export async function getSeries(pagina: number, itensPorPagina: number = ITENS_P
     const totalItens = count ?? 0;
     const totalPaginas = Math.ceil(totalItens / itensPorPagina);
 
+    const seriesFiltradas = (data as Serie[]) || [];
+    const seriesAjustadas = seriesFiltradas.map(serie => ({
+      ...serie,
+      url_stream: adjustVideoUrl(serie.url_stream)
+    }));
+
     return {
-      data: (data as Serie[]) || [],
+      data: seriesAjustadas,
       totalItens: totalItens,
       paginaAtual: pagina,
       itensPorPagina: itensPorPagina,
@@ -164,15 +164,26 @@ export async function getSerieById(id: string): Promise<Serie | null> {
           temporada.episodios.sort((a: any, b: any) => a.numero - b.numero);
           // Converter URLs dos episódios
           temporada.episodios.forEach((episodio: any) => {
-            episodio.url_video = convertVideoUrl(episodio.url_video);
+            episodio.url_video = adjustVideoUrl(episodio.url_video);
           });
         }
       });
     }
 
-    return serieData as Serie;
+    const serieAjustada = {
+      ...serieData,
+      url_stream: adjustVideoUrl(serieData.url_stream)
+    };
+
+    return serieAjustada as Serie;
   } catch (error) {
     console.error('Erro inesperado ao buscar série por ID:', error);
     throw error;
   }
+}
+
+// Na interface Serie, adicionar url_stream opcional
+interface Serie {
+  // ... outros campos ...
+  url_stream?: string;
 } 
