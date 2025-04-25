@@ -44,15 +44,12 @@ export interface Temporada {
 }
 
 export interface Episodio {
-  id: number;
-  temporada_id: number;
+  id: string;
   numero: number;
-  nome?: string;
-  sinopse?: string;
+  titulo: string;
+  duracao: string;
+  url_video: string;
   imagem?: string;
-  data_exibicao?: string;
-  url_video?: string;
-  bunny_guid?: string;
 }
 
 export interface PaginatedResponse<T> {
