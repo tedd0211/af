@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  let url = searchParams.get('url');
+  const url = searchParams.get('url');
   
   if (!url) {
     return new NextResponse('URL não fornecida', { status: 400 });
