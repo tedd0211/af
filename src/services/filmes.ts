@@ -56,8 +56,8 @@ function adjustVideoUrl(url: string | undefined): string {
   if (url.startsWith('http')) {
     return url;
   }
-  // Se não começa com http, adiciona o domínio
-  return `http://srvdigital.fun/movie${url.startsWith('/') ? url : '/' + url}`;
+  // Se não começa com http, adiciona o domínio com HTTPS
+  return `https://srvdigital.fun/movie${url.startsWith('/') ? url : '/' + url}`;
 }
 
 export async function getFilmeById(id: string): Promise<Filme | null> {
