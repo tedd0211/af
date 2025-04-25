@@ -62,6 +62,10 @@ const nextConfig: NextConfig = {
         source: '/api/video/:path*',
         destination: 'http://srvdigital.fun/movie/:path*',
       },
+      {
+        source: '/api/proxy/:path*',
+        destination: 'http://srvdigital.fun/:path*',
+      },
     ];
   },
 };

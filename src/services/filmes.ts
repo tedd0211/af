@@ -52,8 +52,9 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
 
 function adjustVideoUrl(url: string | undefined): string {
   if (!url) return '';
-  // Força todas as URLs para HTTP
-  return url.replace(/^https?:\/\//, 'http://');
+  // Usa o proxy reverso para todas as URLs
+  const urlObj = new URL(url);
+  return `/api/proxy?path=${encodeURIComponent(urlObj.pathname + urlObj.search)}`;
 }
 
 export async function getFilmeById(id: string): Promise<Filme | null> {
