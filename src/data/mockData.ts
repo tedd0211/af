@@ -8,12 +8,14 @@ export interface Filme {
   genres?: string[];
   vote_average?: number;
   vote_count?: number;
-  release_year?: string;
+  release_date?: string;
+  runtime?: number;
   overview?: string;
   imdb_id?: string;
   duration?: number;
   director?: string;
   url_stream?: string;
+  url_download?: string;
 }
 
 export interface Serie {

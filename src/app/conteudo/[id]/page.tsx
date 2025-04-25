@@ -97,7 +97,7 @@ export default function ConteudoPage() {
                     {filme.release_date?.split('-')[0] || 'N/A'}
                   </span>
                   <span className="px-2 py-1 bg-purple-500/10 text-purple-300 rounded text-xs">
-                    {filme.runtime || 'N/A'} min
+                    {filme.duration || 'N/A'} min
                   </span>
                 </div>
               </div>
