@@ -16,6 +16,7 @@ export interface Filme {
   director?: string;
   url_stream?: string;
   url_download?: string;
+  file_size?: number;
 }
 
 export interface Serie {

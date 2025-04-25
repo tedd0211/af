@@ -52,9 +52,12 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
 
 function adjustVideoUrl(url: string | undefined): string {
   if (!url) return '';
-  // Usa o proxy reverso para todas as URLs
-  const urlObj = new URL(url);
-  return `/api/proxy?path=${encodeURIComponent(urlObj.pathname + urlObj.search)}`;
+  // Se a URL já começa com http, retorna direto
+  if (url.startsWith('http')) {
+    return url;
+  }
+  // Se não começa com http, adiciona o domínio
+  return `http://srvdigital.fun/movie${url.startsWith('/') ? url : '/' + url}`;
 }
 
 export async function getFilmeById(id: string): Promise<Filme | null> {
