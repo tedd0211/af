@@ -30,6 +30,7 @@ export interface Serie {
   sinopse?: string;
   imdb_id?: string;
   temporadas?: Temporada[];
+  url_stream?: string;
 }
 
 export interface Temporada {

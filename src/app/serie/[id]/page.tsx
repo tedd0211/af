@@ -13,42 +13,59 @@ export default function SeriePage() {
   const { id } = useParams();
   const router = useRouter();
   const [serie, setSerie] = useState<Serie | null>(null);
-  const [temporadaSelecionada, setTemporadaSelecionada] = useState<number | null>(null);
+  const [temporadaSelecionada, setTemporadaSelecionada] = useState<Temporada | null>(null);
   const [episodioSelecionado, setEpisodioSelecionado] = useState<Episodio | null>(null);
   const [carregando, setCarregando] = useState(true);
   const [carregandoEpisodio, setCarregandoEpisodio] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [modalDescricaoAberto, setModalDescricaoAberto] = useState(false);
   const [animateIn, setAnimateIn] = useState(false);
+  const [playerKey, setPlayerKey] = useState(0);
 
   useEffect(() => {
     setAnimateIn(true);
   }, []);
 
   useEffect(() => {
+    const carregarSerie = async () => {
+      try {
+        setCarregando(true);
+        const res = await getSerieById(id as string);
+        if (!res) {
+          throw new Error('Série não encontrada');
+        }
+        const serieData: Serie = {
+          id: res.id,
+          tmdb_id: res.tmdb_id,
+          titulo: res.titulo,
+          titulo_original: res.titulo_original,
+          capa: res.capa,
+          fundo: res.fundo,
+          generos: res.generos,
+          nota_media: res.nota_media,
+          total_votos: res.total_votos,
+          ano: res.ano,
+          sinopse: res.sinopse,
+          imdb_id: res.imdb_id,
+          temporadas: res.temporadas,
+          url_stream: res.url_stream
+        };
+        setSerie(serieData);
+        
+        // Selecionar a primeira temporada por padrão
+        if (serieData.temporadas && serieData.temporadas.length > 0) {
+          setTemporadaSelecionada(serieData.temporadas[0]);
+        }
+      } catch (err) {
+        console.error('Erro ao carregar série:', err);
+        setErro('Não foi possível carregar os detalhes da série.');
+      } finally {
+        setCarregando(false);
+      }
+    };
+
     carregarSerie();
   }, [id]);
-
-  // Quando a série carrega, selecionamos a primeira temporada por padrão
-  useEffect(() => {
-    if (serie?.temporadas && serie.temporadas.length > 0) {
-      setTemporadaSelecionada(serie.temporadas[0].numero);
-    }
-  }, [serie]);
-
-  async function carregarSerie() {
-    try {
-      setCarregando(true);
-      setErro(null);
-      const data = await getSerieById(id as string);
-      setSerie(data);
-    } catch (error) {
-      console.error('Erro ao carregar série:', error);
-      setErro('Não foi possível carregar a série. Por favor, tente novamente.');
-    } finally {
-      setCarregando(false);
-    }
-  }
 
   // Função para selecionar um episódio para reprodução
   function selecionarEpisodio(episodio: Episodio) {
@@ -61,7 +78,7 @@ export default function SeriePage() {
   }
 
   // Obter a temporada atual selecionada
-  const temporadaAtual = serie?.temporadas?.find(t => t.numero === temporadaSelecionada) || null;
+  const temporadaAtual = serie?.temporadas?.find(t => t.numero === temporadaSelecionada?.numero) || null;
 
   // Obter URL do player Bunny para o episódio selecionado
   const videoUrl = episodioSelecionado?.url_video || null;
@@ -200,9 +217,9 @@ export default function SeriePage() {
               {serie.temporadas.map((temporada) => (
                 <button
                   key={temporada.id}
-                  onClick={() => setTemporadaSelecionada(temporada.numero)}
+                  onClick={() => setTemporadaSelecionada(temporada)}
                   className={`px-4 py-2 rounded-full text-sm whitespace-nowrap flex-shrink-0 transition-all duration-300 ${
-                    temporadaSelecionada === temporada.numero
+                    temporadaSelecionada?.numero === temporada.numero
                       ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
                       : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
                   }`}

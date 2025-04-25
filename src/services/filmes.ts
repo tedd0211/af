@@ -180,10 +180,4 @@ export async function getSerieById(id: string): Promise<Serie | null> {
     console.error('Erro inesperado ao buscar série por ID:', error);
     throw error;
   }
-}
-
-// Na interface Serie, adicionar url_stream opcional
-interface Serie {
-  // ... outros campos ...
-  url_stream?: string;
 } 

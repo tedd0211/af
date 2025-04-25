@@ -54,7 +54,21 @@ export default function Home() {
       // Buscar séries se estiver na aba 'todos' ou 'series'
       if (tipo === 'todos' || tipo === 'series') {
         const resSeries = await getSeries(pagina, ITENS_POR_PAGINA, termoBusca);
-        seriesData = resSeries.data;
+        seriesData = resSeries.data.map((serie: any) => ({
+          id: serie.id,
+          tmdb_id: serie.tmdb_id,
+          titulo: serie.titulo,
+          titulo_original: serie.titulo_original,
+          capa: serie.capa,
+          fundo: serie.fundo,
+          generos: serie.generos,
+          nota_media: serie.nota_media,
+          total_votos: serie.total_votos,
+          ano: serie.ano,
+          sinopse: serie.sinopse,
+          imdb_id: serie.imdb_id,
+          temporadas: serie.temporadas
+        }));
         totalSeries = resSeries.totalItens;
         paginasSeries = resSeries.totalPaginas;
       }
