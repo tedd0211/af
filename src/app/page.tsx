@@ -109,180 +109,182 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900">
-      {/* Formas decorativas com animação */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-20%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
-        <div className="absolute top-[30%] right-[-20%] w-[400px] h-[400px] rounded-full bg-pink-600/10 blur-3xl animate-pulse-slow animation-delay-1000"></div>
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-zinc-950">
+      {/* Header Fixo */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/80 backdrop-blur-lg border-b border-white/5">
+        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 text-transparent bg-clip-text">
+            Biblioteca de Conteúdos
+          </h1>
+        </div>
       </div>
 
-      <div className="relative z-10">
-        {/* Cabeçalho */}
-        <div className="bg-gray-900/80 backdrop-blur-lg border-b border-white/10">
-          <div className="max-w-lg mx-auto px-4 py-4">
-            <h1 className="text-xl font-bold text-purple-400">Biblioteca de Conteúdos</h1>
-          </div>
-        </div>
-
-        {/* Campo de busca e filtros */}
-        <div className="max-w-lg mx-auto px-4 py-4">
-          {/* Campo de busca */}
-          <div className="bg-white/5 backdrop-blur-lg rounded-xl overflow-hidden">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="pt-20 pb-8">
+          {/* Barra de Busca e Filtros */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex-1">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Buscar por título..."
+                  value={busca}
+                  onChange={(e) => setBusca(e.target.value)}
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all duration-300"
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
               </div>
-              <input
-                type="text"
-                placeholder="Buscar por título..."
-                value={busca}
-                onChange={(e) => setBusca(e.target.value)}
-                className="w-full py-3 pl-12 pr-4 bg-transparent border-none focus:outline-none focus:ring-0 text-white placeholder-purple-300/70"
-              />
             </div>
-          </div>
 
-          {/* Botões de filtro */}
-          <div className="flex space-x-2 mt-4">
-            <button
-              onClick={() => setFiltroTipo('todos')}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filtroTipo === 'todos' 
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white' 
-                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
-              }`}
-            >
-              Todos
-            </button>
-            <button
-              onClick={() => setFiltroTipo('filmes')}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filtroTipo === 'filmes' 
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white' 
-                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
-              }`}
-            >
-              Filmes
-            </button>
-            <button
-              onClick={() => setFiltroTipo('series')}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filtroTipo === 'series' 
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white' 
-                  : 'bg-white/5 backdrop-blur-sm text-gray-300 hover:bg-white/10'
-              }`}
-            >
-              Séries
-            </button>
-          </div>
-        </div>
-
-        {/* Conteúdo principal */}
-        <div className="px-4 mt-4">
-          {/* Indicador de Carregamento Principal */}
-          {carregando && (
-            <div className="flex justify-center py-16">
-              <Loading size="large" text="Buscando conteúdo..." variant="film" />
-            </div>
-          )}
-
-          {/* Mensagem de Erro Principal */}
-          {!carregando && erro && (
-            <div className="text-center py-10">
-              <div className="bg-red-400/10 border border-red-400/20 rounded-xl p-6 mb-4 inline-flex items-center max-w-lg mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span className="text-red-300">{erro}</span>
-              </div>
-              <button 
-                onClick={() => carregarConteudo(paginaAtual, filtroTipo, busca)} 
-                className="px-5 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-xl font-medium hover:from-purple-500 hover:to-purple-400 transition-colors shadow-lg shadow-purple-500/20"
+            <div className="flex gap-2">
+              <button
+                onClick={() => setFiltroTipo('todos')}
+                className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  filtroTipo === 'todos'
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
+                    : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
+                }`}
               >
-                Tentar Novamente
+                Todos
+              </button>
+              <button
+                onClick={() => setFiltroTipo('filmes')}
+                className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  filtroTipo === 'filmes'
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
+                    : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
+                }`}
+              >
+                Filmes
+              </button>
+              <button
+                onClick={() => setFiltroTipo('series')}
+                className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  filtroTipo === 'series'
+                    ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/20'
+                    : 'bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10'
+                }`}
+              >
+                Séries
               </button>
             </div>
-          )}
+          </div>
 
-          {/* Lista de Conteúdo */} 
-          {!carregando && !erro && (
-            <div>
-              {conteudos.length > 0 ? (
-                <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} space-y-3 mb-6`}>
-                  {conteudos.map((item, index) => (
-                    <Link 
-                      key={`${item.tipo}-${item.id}`}
-                      href={item.tipo === 'filme' ? `/conteudo/${item.id}` : `/serie/${item.id}`}
-                      className={`flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/5 p-3 rounded-xl shadow-lg hover:bg-white/10 transition-all duration-300 group animate-fade-in`}
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
-                      {/* Capa */}
-                      <div className="relative w-14 h-20 flex-shrink-0 rounded-lg overflow-hidden shadow-md group-hover:shadow-purple-500/30 transition-all duration-300">
-                        <Image
-                          src={item.tipo === 'filme' ? item.cover_url || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa' : item.capa || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa'}
-                          alt={`Capa de ${item.tipo === 'filme' ? item.title ?? '' : item.titulo ?? ''}`}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="56px"
-                        />
-                      </div>
-                      
-                      {/* Informações (Título e Categoria) */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-semibold truncate text-white transition-colors duration-300 group-hover:text-purple-300">
-                          {item.tipo === 'filme' ? item.title : item.titulo}
-                        </h3>
-                        <p className="text-xs text-gray-400 group-hover:text-purple-200 transition-colors duration-300">
-                          {item.tipo === 'filme' ? 'Filme' : 'Série'}
-                        </p>
-                      </div>
+          {/* Formas decorativas com animação */}
+          <div className="fixed inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-[-10%] left-[-20%] w-[600px] h-[600px] rounded-full bg-purple-600/10 blur-3xl animate-pulse-slow"></div>
+            <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-500/10 blur-3xl animate-pulse-slow animation-delay-2000"></div>
+            <div className="absolute top-[30%] right-[-20%] w-[400px] h-[400px] rounded-full bg-pink-600/10 blur-3xl animate-pulse-slow animation-delay-1000"></div>
+          </div>
 
-                      {/* Botão Ver */}
-                      <div className="ml-auto flex-shrink-0">
-                        <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium group-hover:shadow-lg group-hover:shadow-purple-500/20 transition-all duration-300">
-                          Ver
+          {/* Conteúdo principal */}
+          <div className="px-4 mt-4">
+            {/* Indicador de Carregamento Principal */}
+            {carregando && (
+              <div className="flex justify-center py-16">
+                <Loading size="large" text="Buscando conteúdo..." variant="film" />
+              </div>
+            )}
+
+            {/* Mensagem de Erro Principal */}
+            {!carregando && erro && (
+              <div className="text-center py-10">
+                <div className="bg-red-400/10 border border-red-400/20 rounded-xl p-6 mb-4 inline-flex items-center max-w-lg mx-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-400 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span className="text-red-300">{erro}</span>
+                </div>
+                <button 
+                  onClick={() => carregarConteudo(paginaAtual, filtroTipo, busca)} 
+                  className="px-5 py-3 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-xl font-medium hover:from-purple-500 hover:to-purple-400 transition-colors shadow-lg shadow-purple-500/20"
+                >
+                  Tentar Novamente
+                </button>
+              </div>
+            )}
+
+            {/* Lista de Conteúdo */} 
+            {!carregando && !erro && (
+              <div>
+                {conteudos.length > 0 ? (
+                  <div className={`transition-all duration-700 ease-out ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} space-y-3 mb-6`}>
+                    {conteudos.map((item, index) => (
+                      <Link 
+                        key={`${item.tipo}-${item.id}`}
+                        href={item.tipo === 'filme' ? `/conteudo/${item.id}` : `/serie/${item.id}`}
+                        className={`flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/5 p-3 rounded-xl shadow-lg hover:bg-white/10 transition-all duration-300 group animate-fade-in`}
+                        style={{ animationDelay: `${index * 50}ms` }}
+                      >
+                        {/* Capa */}
+                        <div className="relative w-14 h-20 flex-shrink-0 rounded-lg overflow-hidden shadow-md group-hover:shadow-purple-500/30 transition-all duration-300">
+                          <Image
+                            src={item.tipo === 'filme' ? item.cover_url || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa' : item.capa || 'https://via.placeholder.com/150x225/1a1a1a/ffffff?text=Sem+Capa'}
+                            alt={`Capa de ${item.tipo === 'filme' ? item.title ?? '' : item.titulo ?? ''}`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="56px"
+                          />
                         </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center text-purple-200 mt-10 py-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5">
-                  {busca ? `Nenhum ${filtroTipo === 'todos' ? 'conteúdo' : filtroTipo === 'filmes' ? 'filme' : 'série'} encontrado para "${busca}".` : 'Nenhum conteúdo disponível.'}
-                </div>
-              )}
+                        
+                        {/* Informações (Título e Categoria) */}
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-semibold truncate text-white transition-colors duration-300 group-hover:text-purple-300">
+                            {item.tipo === 'filme' ? item.title : item.titulo}
+                          </h3>
+                          <p className="text-xs text-gray-400 group-hover:text-purple-200 transition-colors duration-300">
+                            {item.tipo === 'filme' ? 'Filme' : 'Série'}
+                          </p>
+                        </div>
 
-              {/* Controles de Paginação */} 
-              {totalPaginas > 1 && (
-                <div className="flex justify-center items-center gap-3 mt-8 pb-8 mx-4">
-                  <button
-                    onClick={() => mudarPagina(paginaAtual - 1)}
-                    disabled={paginaAtual === 1 || carregando}
-                    className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <span className="text-sm text-purple-200 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
-                    Página {paginaAtual} de {totalPaginas}
-                  </span>
-                  <button
-                    onClick={() => mudarPagina(paginaAtual + 1)}
-                    disabled={paginaAtual === totalPaginas || carregando}
-                    className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
+                        {/* Botão Ver */}
+                        <div className="ml-auto flex-shrink-0">
+                          <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-3 py-1.5 rounded-lg text-xs font-medium group-hover:shadow-lg group-hover:shadow-purple-500/20 transition-all duration-300">
+                            Ver
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center text-purple-200 mt-10 py-8 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5">
+                    {busca ? `Nenhum ${filtroTipo === 'todos' ? 'conteúdo' : filtroTipo === 'filmes' ? 'filme' : 'série'} encontrado para "${busca}".` : 'Nenhum conteúdo disponível.'}
+                  </div>
+                )}
+
+                {/* Controles de Paginação */} 
+                {totalPaginas > 1 && (
+                  <div className="flex justify-center items-center gap-3 mt-8 pb-8 mx-4">
+                    <button
+                      onClick={() => mudarPagina(paginaAtual - 1)}
+                      disabled={paginaAtual === 1 || carregando}
+                      className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <span className="text-sm text-purple-200 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
+                      Página {paginaAtual} de {totalPaginas}
+                    </span>
+                    <button
+                      onClick={() => mudarPagina(paginaAtual + 1)}
+                      disabled={paginaAtual === totalPaginas || carregando}
+                      className="px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </main>
