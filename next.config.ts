@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   distDir: '.next',
   experimental: {
     optimizePackageImports: ['@supabase/auth-helpers-nextjs'],
+    forceSwcTransforms: true,
   },
   async headers() {
     return [
@@ -23,6 +24,23 @@ const nextConfig: NextConfig = {
           {
             key: 'Access-Control-Allow-Origin',
             value: '*',
+          },
+        ],
+      },
+      {
+        source: '/api/video/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
           },
         ],
       },

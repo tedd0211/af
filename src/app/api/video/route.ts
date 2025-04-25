@@ -11,8 +11,8 @@ export async function GET(request: Request) {
   try {
     const response = await fetch(`http://srvdigital.fun/movie/${path}`, {
       headers: {
-        'Referer': 'https://afiliados-mu.vercel.app',
-        'Origin': 'https://afiliados-mu.vercel.app'
+        'Referer': 'http://afiliados-mu.vercel.app',
+        'Origin': 'http://afiliados-mu.vercel.app'
       }
     });
 

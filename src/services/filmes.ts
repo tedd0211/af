@@ -52,11 +52,8 @@ export async function getFilmes(pagina: number, itensPorPagina: number = ITENS_P
 
 function adjustVideoUrl(url: string | undefined): string {
   if (!url) return '';
-  // Se a URL começar com https:// e contiver srvdigital.fun, muda para http://
-  if (url.startsWith('https://') && url.includes('srvdigital.fun')) {
-    return url.replace('https://', 'http://');
-  }
-  return url;
+  // Força todas as URLs para HTTP
+  return url.replace(/^https?:\/\//, 'http://');
 }
 
 export async function getFilmeById(id: string): Promise<Filme | null> {
